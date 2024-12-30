@@ -1,0 +1,14 @@
+applicationType: default
+defaultPackage: com
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [app-name, data, data-jpa, http-client, jackson-databind, java, java-application, jdbc-hikari, json-schema, json-schema-validation, junit, lombok, maven, maven-enforcer-plugin, micronaut-aot, micronaut-http-validation, netty-server, postgres, properties, readme, security-annotations, shade, slf4j-simple, static-resources, test-resources]
+
+# datasources:
+#   default:
+#   url: "jdbc:postgresql://10.3.0.3:5432/hrms"
+#   username: "dev-hr"
+#   password: "1234"
+
+# security-jwt
