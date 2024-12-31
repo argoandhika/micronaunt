@@ -57,7 +57,7 @@ public class ManajementAksesController {
     @Patch("/{accessId}")
     public HttpResponse<Object> updateAccess(@PathVariable Long accessId, @Body ManajementAksesEntity updatedAccess) {
         try {
-            ManajementAksesEntity updatedEntity = manajementAksesService.updateAccess(accessId, updatedAccess.getRoleCode());
+            ManajementAksesEntity updatedEntity = manajementAksesService.updateAccess(accessId, updatedAccess);
             return ResponseUtil.successResponse(updatedEntity, "Successfully updated data access", HttpStatus.OK);
         } catch (Exception e) {
             return ResponseUtil.failedResponse(e.getMessage(), HttpStatus.BAD_REQUEST);

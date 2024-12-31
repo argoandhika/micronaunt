@@ -11,6 +11,7 @@ import com.exception.impl.ConflictException;
 import com.repository.ManajementAksesRepository;
 
 import jakarta.inject.Singleton;
+import jakarta.transaction.Transactional;
 
 @Singleton
 public class ManajementAksesService {
@@ -48,16 +49,17 @@ public class ManajementAksesService {
         return manajementAksesRepository.findAll();
     }
 
-    public ManajementAksesEntity updateAccess(Long accessId, String roleCode ) throws Exception {
+    @Transactional
+    public ManajementAksesEntity updateAccess(Long accessId, ManajementAksesEntity updatedAccess ) throws Exception {
         Optional<ManajementAksesEntity> existingAccess = manajementAksesRepository.findById(accessId);
     
         if (existingAccess.isPresent()) {
             ManajementAksesEntity entityToUpdate = existingAccess.get();
             // BeanUtils.copyProperties(updatedAccess, entityToUpdate, "id", "created_at", "created_by");
             // Perbarui nilai-nilai yang diperlukan
-            entityToUpdate.setRoleCode(roleCode);
-            // entityToUpdate.setRoleName(updatedAccess.getRoleName());
-            // entityToUpdate.setUri(updatedAccess.getUri());
+            entityToUpdate.setRoleCode(updatedAccess.getRoleCode());
+            entityToUpdate.setRoleName(updatedAccess.getRoleName());
+            entityToUpdate.setUri(updatedAccess.getUri());
             entityToUpdate.setVersion(System.currentTimeMillis());
             entityToUpdate.setUpdate_at(LocalDateTime.now()); // Atur waktu pembaruan
             entityToUpdate.setUpdate_by("DMUSER"); // Atur siapa yang memperbarui

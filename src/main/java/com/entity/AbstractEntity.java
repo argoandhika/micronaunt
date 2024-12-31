@@ -16,7 +16,7 @@ public class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     
     @DateCreated
     @Column(name = "created_at", nullable =false, updatable = false)
@@ -40,11 +40,11 @@ public class AbstractEntity {
     private Integer status;
     
     // Getters and Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
